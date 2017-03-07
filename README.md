@@ -2,7 +2,7 @@
 
 [![Circle CI](https://circleci.com/gh/snugbear/nightwatch-axe.svg?style=shield)](https://circleci.com/gh/snugbear/nightwatch-axe)
 
-Nightwatch.js custom commands and assertions for aXe.
+Nightwatch.js custom commands for aXe.
 
 ## Install
 
@@ -17,10 +17,7 @@ Update your nightwatch config file with new paths to command and assertion files
 ```js
 {
   custom_commands_path : [
-    "node_modules/nightwatch-axe/src/commands"
-  ],
-  custom_assertions_path : [
-    "node_modules/nightwatch-axe/src/assertions"
+    "../node_modules/nightwatch-axe/src/commands"
   ]
 }
 ```
@@ -49,7 +46,8 @@ Analyzes the current page against applied axe rules
 
 Parameter Name | Parameter Type | Description
 -------------  | -------------- | -----------
-options        | object         | 
+selector       | string         | css selector to area under test
+options        | object         | set of [axe options](https://github.com/dequelabs/axe-core/blob/master/doc/API.md#options-parameter)
 
 ```js
 export default {
@@ -59,11 +57,11 @@ export default {
     ...
     
     browser.axeInject()
-    browser.axeRun()
+    browser.axeRun('#main', {
+      rules: {
+        'color-contrast': { enabled: false }
+      }
+    })
   }
 }
 ```
-
-## aXe Assertions
-
-coming soon
