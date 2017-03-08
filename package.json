@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "snugbear/nightwatch-axe",
   "license": "MIT",
-  "peerDependencies": {
+  "dependencies": {
     "axe-core": "^2.1.7"
   }
 }

@@ -17,7 +17,7 @@ Update your nightwatch config file with new paths to command and assertion files
 ```js
 {
   custom_commands_path : [
-    "../node_modules/nightwatch-axe/src/commands"
+    "./node_modules/nightwatch-axe/src/commands"
   ]
 }
 ```

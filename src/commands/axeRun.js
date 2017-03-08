@@ -12,13 +12,23 @@ exports.command = function axeRun(selector='html', options={}) {
     })(window.axe)
 
   }, [selector, options], function(response) {
-    this.assert.ok(response.state === 'success', 'Failed to Execute aXe Test')
+    this.assert.ok(response.state === 'success', 'axeRun command executed')
 
     const { error, results } = response.value
-    this.assert.ok(!error, error)
+    this.assert.ok(!error, error || 'executing aXe tests')
 
-    const { violations } = results
-    this.assert.ok(violations.length < 1, 'aXe Violations Found')
+    const { passes=[], violations=[] } = results
+
+    this.assert.ok(true, `${passes.length} aXe Tests Passed`)
+
+    for (const violation of violations) {
+      const { help } = violation
+
+      for (const node of violation.nodes) {
+        const { target } = node
+        this.assert.ok(false, `${help} on element ${target}`)
+      }
+    }
   })
 
   return this
