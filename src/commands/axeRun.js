@@ -12,8 +12,6 @@ exports.command = function axeRun(selector='html', options={}) {
     })(window.axe)
 
   }, [selector, options], function(response) {
-    this.assert.ok(response.state === 'success', 'axeRun command executed')
-
     const { error, results } = response.value
     this.assert.ok(!error, error || 'executing aXe tests')
 
