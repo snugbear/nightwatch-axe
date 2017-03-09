@@ -8,7 +8,7 @@ const axe = fs.existsSync(localPath)
   ? fs.readFileSync(localPath, 'utf8')
   ? fs.readFileSync(parentPath, 'utf8')
 
-exports.command = function axeInject() {
+module.exports.command = function axeInject() {
   this.execute(function(js) { eval(js) }, [axe])
 
   return this

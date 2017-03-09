@@ -1,4 +1,4 @@
-exports.command = function axeRun(selector='html', options={}) {
+module.exports.command = function axeRun(selector='html', options={}) {
   this.executeAsync(function(selector, options, done) {
 
     (function(axe) {
