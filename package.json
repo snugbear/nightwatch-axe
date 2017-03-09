@@ -1,6 +1,6 @@
 {
   "name": "nightwatch-axe",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Nightwatch Plugin for aXe",
   "main": "index.js",
   "repository": "snugbear/nightwatch-axe",
