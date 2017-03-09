@@ -6,7 +6,7 @@ const parentPath = path.join(__dirname, '..', '..', '..', 'axe-core', 'axe.min.j
 
 const axe = fs.existsSync(localPath)
   ? fs.readFileSync(localPath, 'utf8')
-  ? fs.readFileSync(parentPath, 'utf8')
+  : fs.readFileSync(parentPath, 'utf8')
 
 module.exports.command = function axeInject() {
   this.execute(function(js) { eval(js) }, [axe])
