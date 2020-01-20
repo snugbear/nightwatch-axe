@@ -1,6 +1,6 @@
-# Nightwatch Axe
+# Nightwatch Axe Verbose
 
-[![Circle CI](https://circleci.com/gh/snugbear/nightwatch-axe.svg?style=shield)](https://circleci.com/gh/snugbear/nightwatch-axe)
+This fork of nightwatch-axe is more verbose in that it will report each passing rule run and how many elements it was run against. In addition, each rule failure will be counted individually against each failing element so downstream failures are not hidden.
 
 Nightwatch.js custom commands for aXe.
 
@@ -29,39 +29,17 @@ Update your nightwatch config file with new paths to command and assertion files
 Injects the axe-core js library into your test page
 
 ```js
-export default {
-  '@tags': ['accessibility'],
+module.exports = {
+    '@tags': ['accessibility'],
+    'ensure site is accessible': function (browser) {
 
-  'Page Is Accessible'(browser) {
-    ...
-    
-    browser.axeInject()
-  }
-}
+        browser
+            .url('https://dequeuniversity.com/demo/mars/')
+            .axeInject()
+            .axeRun('body', {
+                rules: {'color-contrast': { enabled: false }}
+            })
+            .end();
+    }
 ```
-
-#### `axeRun(options)`
-
-Analyzes the current page against applied axe rules
-
-Parameter Name | Parameter Type | Description
--------------  | -------------- | -----------
-selector       | string         | css selector to area under test
-options        | object         | set of [axe options](https://github.com/dequelabs/axe-core/blob/master/doc/API.md#options-parameter)
-
-```js
-export default {
-  '@tags': ['accessibility'],
-
-  'Page Is Accessible'(browser) {
-    ...
-    
-    browser.axeInject()
-    browser.axeRun('#main', {
-      rules: {
-        'color-contrast': { enabled: false }
-      }
-    })
-  }
-}
-```
+AxeRun takes as a first parameter the selector of the element you want to run the axe test against. If you do it on a larger containing element such as the body all the inner elements will be scanned.
