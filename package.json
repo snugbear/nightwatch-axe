@@ -1,9 +1,9 @@
 {
-  "name": "nightwatch-axe-verbose",
-  "version": "0.1",
-  "description": "Nightwatch Plugin for aXe verbose edition",
+  "name": "nightwatch-axe",
+  "version": "0.1.5",
+  "description": "Nightwatch Plugin for aXe",
   "main": "index.js",
-  "repository": "reallymello/nightwatch-axe",
+  "repository": "snugbear/nightwatch-axe",
   "license": "MIT",
   "dependencies": {
     "axe-core": "^2.1.7"
